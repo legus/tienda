@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Products</h1>
+<%= link_to 'Nuevo', new_product_path %>
+<div class="col l8">
+<table>
+  <thead>
+    <tr>
+      <th>Codigo</th>
+      <th>Nombre</th>
+      <th>Descripcion</th>
+      <th>Precio</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.codigo %></td>
+        <td><%= product.nombre %></td>
+        <td><%= product.descripcion %></td>
+        <td><%= product.precio %></td>
+        <td><%= link_to 'Show', product %></td>
+        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= will_paginate @products %>
+</div>
+
+<div class="col l4">
+  <fieldset class="search-form">
+    <legend>Filtro</legend>
+    <table>
+      <tr>
+        <td>
+          codigo
+        </td>
+        <td>
+          nombre
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          boton
+        </td>
+      </tr>
+    </table>
+  </fieldset>
+</div>
+

@@ -1,0 +1,38 @@
+<%= form_for(product) do |f| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <label class="active" for="codigo">Codigo</label>
+    <%= f.text_field :codigo, placeholder: "Codigo", class:"validate"%>
+  </div>
+
+  <div class="field">
+    <label class="active" for="nombre">Nombre</label>
+    <%= f.text_field :nombre, placeholder: "Nombre", class:"validate" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :descripcion %><br>
+    <%= f.text_area :descripcion, placeholder:"", class:"materialize-textarea" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :precio %>
+    <%= f.text_field :precio %>
+  </div>
+
+  <div class="actions" align="center">
+    <%= f.submit "Guardar", class:"btn cyan accent-2" %>
+    <%= link_to 'Cancelar', products_path, class:"btn cyan accent-2"  %>
+  </div>
+<% end %>
